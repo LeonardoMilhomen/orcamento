@@ -1,0 +1,455 @@
+<!DOCTYPE html><html lang="pt-br"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#ff5722">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Parceria - Daiane Cabral</title>
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="profile-header">
+            <div class="profile-img-container">
+                <div class="profile-img">
+                    <img src="images/foto.png" alt="Daiane Cabral">
+                </div>
+            </div>
+            <div class="profile-name">Daiane Cabral</div>
+        </div>
+
+        <div class="option-buttons">
+            <button id="metrics-btn" class="option-button">
+                <i class="fas fa-chart-bar"></i>
+                <span>Minhas Métricas</span>
+            </button>
+            <button id="partnership-btn" class="option-button">
+                <i class="fas fa-handshake"></i>
+                <span>Quero Fazer Parceria</span>
+            </button>
+        </div>
+
+        <!-- Seção de métricas -->
+        <div id="metrics-section" class="content-section" style="display: none;">
+            <h2 class="section-title">Métricas do Instagram</h2>
+            <div class="stats-container">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="stat-title">Seguidores</div>
+                    <div class="stat-value">182.5K</div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-image"></i>
+                    </div>
+                    <div class="stat-title">Total de Posts</div>
+                    <div class="stat-value">196</div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="stat-title">Taxa de Engajamento</div>
+                    <div class="stat-subtitle">(Últimos 10 posts)</div>
+                    <div class="stat-value">19.51%</div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-thumbs-up"></i>
+                    </div>
+                    <div class="stat-title">Média de Curtidas</div>
+                    <div class="stat-subtitle">(Últimos 10 posts)</div>
+                    <div class="stat-value">28.4K</div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <div class="stat-title">Média de Visualizações</div>
+                    <div class="stat-subtitle">(Últimos 10 posts)</div>
+                    <div class="stat-value">24.1K</div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-percentage"></i>
+                    </div>
+                    <div class="stat-title">Engajamento Reels</div>
+                    <div class="stat-subtitle">(Últimos 10 Reels)</div>
+                    <div class="stat-value">6.16%</div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-play-circle"></i>
+                    </div>
+                    <div class="stat-title">Visualizações Reels</div>
+                    <div class="stat-subtitle">(Últimos 10 Reels)</div>
+                    <div class="stat-value">1.3M</div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <div class="stat-title">Curtidas Reels</div>
+                    <div class="stat-subtitle">(Últimos 10 Reels)</div>
+                    <div class="stat-value">62.5K</div>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 20px;">
+                <a href="https://www.creatorsjet.com/jet/daianncabral" class="verify-button" target="_blank" rel="noopener noreferrer">
+                    <i class="fas fa-search-plus"></i>
+                    Verificar autenticidade das informações
+                </a>
+            </div>
+        </div>
+
+        <!-- Seção de formulário de parceria -->
+        <div id="partnership-section" class="content-section" style="display: none;">
+            <h2 class="section-title">Fazer Parceria</h2>
+            
+            <div class="pricing-calculator">
+                <h3 class="pricing-title">Calculadora de Orçamento</h3>
+                <p class="pricing-subtitle">Selecione a data e o tipo de serviço para visualizar o valor</p>
+                
+                <div class="pricing-form">
+                    <div class="form-row">
+                        <div class="form-group half">
+                            <label for="pub-date">Data da publicação <span class="required">*</span></label>
+                            <div class="input-with-icon">
+                                <i class="fas fa-calendar-alt"></i>
+                                <input type="number" min="1" max="31" class="form-control" id="pub-date" placeholder="Ex: 15" required="">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group half">
+                            <label for="content-type">Tipo de conteúdo <span class="required">*</span></label>
+                            <div class="select-with-icon">
+                                <i class="fas fa-camera"></i>
+                                <select class="select-control" id="content-type" required="">
+                                    <option value="" disabled="" selected="">Selecione</option>
+                                    <option value="feed">Feed</option>
+                                    <option value="reels">Reels</option>
+                                    <option value="stories">Stories (3)</option>
+                                    <option value="package">Pacote Completo</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button type="button" id="calculate-btn" class="calculate-button">
+                        <i class="fas fa-calculator"></i>
+                        Calcular valor
+                    </button>
+                </div>
+                
+                <div id="price-result" class="price-result">
+                    <div class="price-tag">
+                        <span class="price-label">Valor da publicação:</span>
+                        <span class="price-value">R$ <span id="calculated-price">0,00</span></span>
+                    </div>
+                    <div id="price-details" class="price-details"></div>
+                </div>
+                
+                <div class="pricing-table-toggle">
+                    <button id="show-table-btn" class="toggle-button">
+                        <i class="fas fa-table"></i>
+                        Ver tabela completa
+                    </button>
+                </div>
+                
+                <div id="full-pricing-table" class="full-pricing-table">
+                    <table class="pricing-table">
+                        <thead>
+                            <tr>
+                                <th>Período</th>
+                                <th>Feed</th>
+                                <th>Reels</th>
+                                <th>Stories (3)</th>
+                                <th>Pacote Completo</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Dia 1-10</strong></td>
+                                <td>R$ 1.200</td>
+                                <td>R$ 2.500</td>
+                                <td>R$ 700</td>
+                                <td>R$ 4.000</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Dia 11-20</strong></td>
+                                <td>R$ 900</td>
+                                <td>R$ 1.800</td>
+                                <td>R$ 500</td>
+                                <td>R$ 3.000</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Dia 21-31</strong></td>
+                                <td>R$ 600</td>
+                                <td>R$ 1.200</td>
+                                <td>R$ 400</td>
+                                <td>R$ 2.000</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <form id="partnership-form">
+                <div class="form-group">
+                    <label for="name">Nome <span class="required">*</span></label>
+                    <div class="input-with-icon">
+                        <i class="fas fa-user"></i>
+                        <input type="text" class="form-control" id="name" name="name" placeholder="Digite seu nome completo" required="">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">E-mail <span class="required">*</span></label>
+                    <div class="input-with-icon">
+                        <i class="fas fa-envelope"></i>
+                        <input type="email" class="form-control" id="email" name="email" placeholder="Digite seu e-mail" required="">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="whatsapp">Número do WhatsApp <span class="required">*</span></label>
+                    <div class="input-with-icon">
+                        <i class="fab fa-whatsapp"></i>
+                        <input type="tel" class="form-control" id="whatsapp" name="whatsapp" placeholder="Ex: +5561993781276" required="">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="product-type">Tipo de produto <span class="required">*</span></label>
+                    <div class="select-with-icon">
+                        <i class="fas fa-box"></i>
+                        <select class="select-control" id="product-type" name="product-type" required="">
+                            <option value="" disabled="" selected="">Selecione o tipo de produto</option>
+                            <option value="Digital">Digital</option>
+                            <option value="Físico">Físico</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="company-name">Nome da empresa <span class="required">*</span></label>
+                    <div class="input-with-icon">
+                        <i class="fas fa-building"></i>
+                        <input type="text" class="form-control" id="company-name" name="company-name" placeholder="Digite o nome da sua empresa" required="">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="company-site">Site da empresa</label>
+                    <div class="input-with-icon">
+                        <i class="fas fa-globe"></i>
+                        <input type="url" class="form-control" id="company-site" name="company-site" placeholder="Digite o site da sua empresa (opcional)">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="company-instagram">Instagram da empresa <span class="required">*</span></label>
+                    <div class="input-with-icon">
+                        <i class="fab fa-instagram"></i>
+                        <input type="text" class="form-control" id="company-instagram" name="company-instagram" placeholder="@sua_empresa" required="">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="partnership-type">Tipo de parceria <span class="required">*</span></label>
+                    <div class="select-with-icon">
+                        <i class="fas fa-handshake"></i>
+                        <select class="select-control" id="partnership-type" name="partnership-type" required="">
+                            <option value="" disabled="" selected="">Selecione o tipo de parceria</option>
+                            <option value="Produtos">Parceria em produtos</option>
+                            <option value="Paga">Parceria paga</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="description">Descreva o que você precisa divulgar <span class="required">*</span></label>
+                    <div class="input-with-icon textarea-with-icon">
+                        <i class="fas fa-comment-alt"></i>
+                        <textarea class="textarea-control" id="description" name="description" placeholder="Descreva detalhadamente o que você precisa divulgar" required=""></textarea>
+                    </div>
+                </div>
+
+                <button type="submit" class="submit-button">Enviar proposta</button>
+            </form>
+        </div>
+
+        <div id="success-message" class="success-message">
+            Dados enviados com sucesso! Aguarde nosso retorno.
+        </div>
+
+        <a href="index.html" class="back-link">
+            <i class="fas fa-arrow-left"></i>
+            Voltar para o perfil
+        </a>
+    </div>
+
+    <script>
+        // Mostrar/ocultar seções
+        document.getElementById('metrics-btn').addEventListener('click', function() {
+            document.getElementById('metrics-section').style.display = 'block';
+            document.getElementById('partnership-section').style.display = 'none';
+            document.getElementById('success-message').style.display = 'none';
+        });
+
+        document.getElementById('partnership-btn').addEventListener('click', function() {
+            document.getElementById('metrics-section').style.display = 'none';
+            document.getElementById('partnership-section').style.display = 'block';
+            document.getElementById('success-message').style.display = 'none';
+        });
+
+        // Processamento do formulário
+        document.getElementById('partnership-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Coleta dados do formulário
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const whatsapp = document.getElementById('whatsapp').value;
+            const productType = document.getElementById('product-type').value;
+            const companyName = document.getElementById('company-name').value;
+            const companySite = document.getElementById('company-site').value || "Não informado";
+            const companyInstagram = document.getElementById('company-instagram').value;
+            const partnershipType = document.getElementById('partnership-type').value;
+            const description = document.getElementById('description').value;
+            
+            // Calculadora de preço (se disponível)
+            let priceInfo = '';
+            const calculatedPrice = document.getElementById('calculated-price').textContent;
+            if (calculatedPrice !== '0,00') {
+                const pubDate = document.getElementById('pub-date').value;
+                const contentType = document.getElementById('content-type').value;
+                const contentTypeName = {
+                    'feed': 'Feed',
+                    'reels': 'Reels',
+                    'stories': 'Stories (3)',
+                    'package': 'Pacote Completo'
+                }[contentType];
+                
+                priceInfo = `\n*Publicação solicitada:* ${contentTypeName} para o dia ${pubDate}\n*Valor cotado:* R$ ${calculatedPrice}`;
+            }
+            
+            // Formata mensagem para WhatsApp
+            const message = encodeURIComponent(
+                `*NOVA PROPOSTA DE PARCERIA*\n\n` +
+                `*Nome:* ${name}\n` +
+                `*Email:* ${email}\n` +
+                `*WhatsApp:* ${whatsapp}\n` +
+                `*Tipo de Produto:* ${productType}\n` +
+                `*Nome da Empresa:* ${companyName}\n` +
+                `*Site da Empresa:* ${companySite}\n` +
+                `*Instagram da Empresa:* ${companyInstagram}\n` +
+                `*Tipo de Parceria:* ${partnershipType}${priceInfo}\n\n` +
+                `*Descrição:*\n${description}`
+            );
+            
+            // Mostra mensagem de sucesso
+            document.getElementById('success-message').style.display = 'block';
+            document.getElementById('partnership-section').style.display = 'none';
+            
+            // Redireciona para WhatsApp após um breve delay
+            setTimeout(function() {
+                window.location.href = `https://wa.me/5561993781276?text=${message}`;
+            }, 2000);
+        });
+        
+        // Calculadora de preço
+        document.getElementById('calculate-btn').addEventListener('click', function() {
+            const pubDate = parseInt(document.getElementById('pub-date').value);
+            const contentType = document.getElementById('content-type').value;
+            
+            if (isNaN(pubDate) || pubDate < 1 || pubDate > 31 || !contentType) {
+                alert('Por favor, informe uma data válida (1-31) e selecione o tipo de conteúdo.');
+                return;
+            }
+            
+            // Tabela de preços
+            const prices = {
+                'feed': [1200, 900, 600],
+                'reels': [2500, 1800, 1200],
+                'stories': [700, 500, 400],
+                'package': [4000, 3000, 2000]
+            };
+            
+            // Determinar faixa de preço com base na data
+            let priceIndex;
+            if (pubDate >= 1 && pubDate <= 10) {
+                priceIndex = 0;
+            } else if (pubDate >= 11 && pubDate <= 20) {
+                priceIndex = 1;
+            } else {
+                priceIndex = 2;
+            }
+            
+            // Obter o preço
+            const price = prices[contentType][priceIndex];
+            
+            // Formar o texto de detalhes
+            const periodTexts = [
+                'Este valor se aplica para publicações entre os dias 1 e 10 do mês',
+                'Este valor se aplica para publicações entre os dias 11 e 20 do mês',
+                'Este valor se aplica para publicações entre os dias 21 e 31 do mês'
+            ];
+            
+            const contentTypeNames = {
+                'feed': 'Feed',
+                'reels': 'Reels',
+                'stories': 'Stories (3)',
+                'package': 'Pacote Completo'
+            };
+            
+            // Exibir o resultado
+            document.getElementById('calculated-price').textContent = price.toLocaleString('pt-BR');
+            document.getElementById('price-details').innerHTML = `
+                <p>Tipo de conteúdo: <span class="highlight">${contentTypeNames[contentType]}</span></p>
+                <p>Data selecionada: <span class="highlight">Dia ${pubDate}</span></p>
+                <p>${periodTexts[priceIndex]}</p>
+            `;
+            
+            // Destacar o resultado
+            const priceResult = document.getElementById('price-result');
+            priceResult.style.boxShadow = '0 8px 16px rgba(0, 0, 0, 0.1)';
+            
+            // Animar brevemente para chamar atenção
+            priceResult.style.transform = 'scale(1.02)';
+            setTimeout(() => {
+                priceResult.style.transform = 'scale(1)';
+            }, 200);
+        });
+        
+        // Mostrar/ocultar tabela completa
+        document.getElementById('show-table-btn').addEventListener('click', function() {
+            const table = document.getElementById('full-pricing-table');
+            const button = document.getElementById('show-table-btn');
+            
+            if (table.style.display === 'block') {
+                table.style.display = 'none';
+                button.innerHTML = '<i class="fas fa-table"></i> Ver tabela completa';
+            } else {
+                table.style.display = 'block';
+                button.innerHTML = '<i class="fas fa-times"></i> Ocultar tabela';
+            }
+        });
+
+        // Inicialmente, não mostra nenhuma seção
+        document.getElementById('metrics-section').style.display = 'none';
+        document.getElementById('partnership-section').style.display = 'none';
+    </script>
+
+</body></html>
