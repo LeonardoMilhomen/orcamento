@@ -18,9 +18,9 @@ if ($_SERVER["REQUEST_METHOD"] !== "POST") {
 }
 
 // ---- DADOS DO SEU E-MAIL (JÁ CONFIGURADOS) ----
-$seuEmailGmail = 'geraldimais@gmail.com';     // E-MAIL GMAIL AUTENTICADOR E DESTINATÁRIO
-$suaSenhaDeApp = 'vnwl cxts ybxy vthd';            // SENHA DE APP (espaços removidos)
-$emailDeDestino = 'geraldimias@gmail.com';    // E-MAIL QUE RECEBERÁ AS PROPOSTAS
+$seuEmailGmail = 'jessicanogueira.contatoo@gmail.com';     // E-MAIL GMAIL AUTENTICADOR E DESTINATÁRIO
+$suaSenhaDeApp = 'hbzp jrau hvek ndrd';            // SENHA DE APP (espaços removidos)
+$emailDeDestino = 'jessicanogueira.contatoo@gmail.com';    // E-MAIL QUE RECEBERÁ AS PROPOSTAS
 $nomeDeDestino = 'Jessica Nogueira';              // NOME DE QUEM RECEBERÁ
 
 // Coleta e sanitiza os dados do formulário
