@@ -1,10 +1,12 @@
-<!DOCTYPE html><html lang="pt-br"><head>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <meta name="theme-color" content="#ff5722">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Parceria - Daiane Cabral</title>
+    <title>Parceria - Jessica Nogueira</title>
     <link rel="stylesheet" href="css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
@@ -13,10 +15,10 @@
         <div class="profile-header">
             <div class="profile-img-container">
                 <div class="profile-img">
-                    <img src="images/foto.png" alt="Daiane Cabral">
+                    <img src="images/foto.jpg" alt="Jessica Nogueira">
                 </div>
             </div>
-            <div class="profile-name">Daiane Cabral</div>
+            <div class="profile-name">Jessica Nogueira</div>
         </div>
 
         <div class="option-buttons">
@@ -30,7 +32,6 @@
             </button>
         </div>
 
-        <!-- Seção de métricas -->
         <div id="metrics-section" class="content-section" style="display: none;">
             <h2 class="section-title">Métricas do Instagram</h2>
             <div class="stats-container">
@@ -113,7 +114,6 @@
             </div>
         </div>
 
-        <!-- Seção de formulário de parceria -->
         <div id="partnership-section" class="content-section" style="display: none;">
             <h2 class="section-title">Fazer Parceria</h2>
             
@@ -205,7 +205,7 @@
                 </div>
             </div>
 
-            <form id="partnership-form">
+            <form id="partnership-form" novalidate>
                 <div class="form-group">
                     <label for="name">Nome <span class="required">*</span></label>
                     <div class="input-with-icon">
@@ -314,59 +314,60 @@
             document.getElementById('success-message').style.display = 'none';
         });
 
-        // Processamento do formulário
+        // Processamento do formulário com envio por E-MAIL (AJAX)
         document.getElementById('partnership-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Coleta dados do formulário
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const whatsapp = document.getElementById('whatsapp').value;
-            const productType = document.getElementById('product-type').value;
-            const companyName = document.getElementById('company-name').value;
-            const companySite = document.getElementById('company-site').value || "Não informado";
-            const companyInstagram = document.getElementById('company-instagram').value;
-            const partnershipType = document.getElementById('partnership-type').value;
-            const description = document.getElementById('description').value;
-            
-            // Calculadora de preço (se disponível)
-            let priceInfo = '';
+            e.preventDefault(); // Impede o envio padrão do formulário
+
+            const form = e.target;
+            const submitButton = form.querySelector('.submit-button');
+            const originalButtonText = submitButton.innerHTML;
+
+            // Desabilita o botão e mostra um status de "enviando"
+            submitButton.disabled = true;
+            submitButton.innerHTML = 'Enviando... <i class="fas fa-spinner fa-spin"></i>';
+
+            // Cria um objeto FormData para coletar todos os dados do formulário
+            const formData = new FormData(form);
+
+            // Adiciona as informações da calculadora ao formulário, se houver
             const calculatedPrice = document.getElementById('calculated-price').textContent;
             if (calculatedPrice !== '0,00') {
                 const pubDate = document.getElementById('pub-date').value;
-                const contentType = document.getElementById('content-type').value;
-                const contentTypeName = {
-                    'feed': 'Feed',
-                    'reels': 'Reels',
-                    'stories': 'Stories (3)',
-                    'package': 'Pacote Completo'
-                }[contentType];
+                const contentTypeSelect = document.getElementById('content-type');
+                const contentTypeName = contentTypeSelect.options[contentTypeSelect.selectedIndex].text;
                 
-                priceInfo = `\n*Publicação solicitada:* ${contentTypeName} para o dia ${pubDate}\n*Valor cotado:* R$ ${calculatedPrice}`;
+                formData.append('data_publicacao', pubDate);
+                formData.append('tipo_conteudo', contentTypeName);
+                formData.append('valor_cotado', calculatedPrice);
             }
-            
-            // Formata mensagem para WhatsApp
-            const message = encodeURIComponent(
-                `*NOVA PROPOSTA DE PARCERIA*\n\n` +
-                `*Nome:* ${name}\n` +
-                `*Email:* ${email}\n` +
-                `*WhatsApp:* ${whatsapp}\n` +
-                `*Tipo de Produto:* ${productType}\n` +
-                `*Nome da Empresa:* ${companyName}\n` +
-                `*Site da Empresa:* ${companySite}\n` +
-                `*Instagram da Empresa:* ${companyInstagram}\n` +
-                `*Tipo de Parceria:* ${partnershipType}${priceInfo}\n\n` +
-                `*Descrição:*\n${description}`
-            );
-            
-            // Mostra mensagem de sucesso
-            document.getElementById('success-message').style.display = 'block';
-            document.getElementById('partnership-section').style.display = 'none';
-            
-            // Redireciona para WhatsApp após um breve delay
-            setTimeout(function() {
-                window.location.href = `https://wa.me/5561993781276?text=${message}`;
-            }, 2000);
+
+            // Envia os dados para o script PHP usando a API Fetch (AJAX)
+            fetch('enviar_proposta.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json()) // Espera uma resposta JSON do PHP
+            .then(data => {
+                if (data.status === 'success') {
+                    // Se o envio foi bem-sucedido, mostra a mensagem de sucesso
+                    document.getElementById('success-message').style.display = 'block';
+                    document.getElementById('partnership-section').style.display = 'none';
+                    form.reset(); // Limpa o formulário
+                } else {
+                    // Se o PHP retornar um erro, exibe um alerta
+                    alert('Erro ao enviar a proposta: ' + data.message);
+                }
+            })
+            .catch(error => {
+                // Em caso de erro de rede ou falha na comunicação
+                console.error('Erro na requisição:', error);
+                alert('Ocorreu um erro de comunicação. Por favor, tente novamente.');
+            })
+            .finally(() => {
+                // Reabilita o botão e restaura o texto original
+                submitButton.disabled = false;
+                submitButton.innerHTML = originalButtonText;
+            });
         });
         
         // Calculadora de preço
@@ -452,4 +453,5 @@
         document.getElementById('partnership-section').style.display = 'none';
     </script>
 
-</body></html>
+</body>
+</html>
